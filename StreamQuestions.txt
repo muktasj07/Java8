@@ -1,0 +1,121 @@
+public class AverageOfAllNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+     
+		List<Integer> list= Arrays.asList(1,2,3,4,5);
+		double avg=list.stream().mapToInt(e->e).average().getAsDouble();
+		System.out.println(avg);
+		
+		
+	}
+
+}
+
+public class duplicatenumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list= Arrays.asList(1,2,3,4,5,4,2,3);
+		Set<Integer> ans=list.stream().filter(e-> Collections.frequency(list, e)>1).collect(Collectors.toSet());
+		System.out.println(ans);
+
+		
+	}
+
+}
+
+
+public class EvenoddNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list= Arrays.asList(1,2,3,4,5);
+		List<Integer> evenList=list.stream().filter(e->e%2==0).collect(Collectors.toList());
+		System.out.println(evenList);
+		
+		List<Integer> oddList=list.stream().filter(e->e%2!=0).collect(Collectors.toList());
+		System.out.println(oddList);
+
+	}
+
+}
+
+
+
+public class maxandmin {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list= Arrays.asList(0,1,2,3,4,5,4,2,3);
+		Integer minimum=list.stream().min((s1,s2) -> s1.compareTo(s2)).get();
+		System.out.println(minimum);
+		
+		Integer maximum=list.stream().max((s1,s2) -> s1.compareTo(s2)).get();
+		System.out.println(maximum);
+
+	}
+
+}
+
+
+
+
+
+public class printnumberstartwithprefix2 {
+	public static void main(String[] args) {
+		//2 ,22, 234, 567, 890, 432, 234
+		
+		List<Integer> list= Arrays.asList(2 ,22, 234, 567, 890, 432, 234);
+		List<Integer> numwith2=list.stream()
+			.map(e -> String.valueOf(e))
+				.filter(e -> e.startsWith("2"))
+					.map(Integer::valueOf)
+							.collect(Collectors.toList());
+		System.out.println(numwith2);
+
+	}
+
+}
+
+
+public class secondlowestandhighestnum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list= Arrays.asList(1,2,3,4,5,4,2,3);
+		int secH=  list.stream().sorted(Collections.reverseOrder()).distinct().skip(1).findFirst().get();
+		System.out.println(secH);
+		
+		int secL=  list.stream().sorted().distinct().skip(1).findFirst().get();
+		System.out.println(secL);
+		
+		
+	}
+
+}
+
+
+public class sortnumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list= Arrays.asList(1,2,3,4,5,4,2,3);
+		List<Integer> sortednum= list.stream().sorted().collect(Collectors.toList());
+		System.out.println(sortednum);
+		
+		List<Integer> descsortedlist=list.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList());
+		System.out.println(descsortedlist);
+	}
+
+}
+
+public class SumOfNumbers {
+	
+	public static void main(String[] args) {
+		
+		List<Integer> list= Arrays.asList(1,4,5,9,8,6,7,4);
+		Optional<Integer> sum= list.stream().reduce((a,b)->(a+b));
+		System.out.println("sum of numbers" +sum.get());
+	}
+}
